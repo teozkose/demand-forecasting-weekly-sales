@@ -1,0 +1,54 @@
+{
+  "setup": {
+    "products": 20,
+    "weeks": 104,
+    "holdout_weeks": 12,
+    "holdout_start": "2011-09-12",
+    "holdout_end": "2011-11-28",
+    "lags": [
+      1,
+      2,
+      3,
+      4,
+      8,
+      52
+    ]
+  },
+  "methods": {
+    "naive": {
+      "products_wape_pooled": 0.589,
+      "products_wape_median": 0.683,
+      "products_mae": 231.1,
+      "total_wape": 0.165,
+      "total_mae": 21435.0
+    },
+    "seasonal_naive": {
+      "products_wape_pooled": 0.668,
+      "products_wape_median": 0.867,
+      "products_mae": 262.2,
+      "total_wape": 0.202,
+      "total_mae": 26232.0
+    },
+    "holt_damped": {
+      "products_wape_pooled": 0.446,
+      "products_wape_median": 0.499,
+      "products_mae": 175.1,
+      "total_wape": 0.167,
+      "total_mae": 21655.0
+    },
+    "gradient_boost": {
+      "products_wape_pooled": 0.522,
+      "products_wape_median": 0.534,
+      "products_mae": 204.9,
+      "total_wape": 0.196,
+      "total_mae": 25447.0
+    }
+  },
+  "best_method_products": "holt_damped",
+  "best_method_total": "naive",
+  "products_won_by_method": {
+    "holt_damped": 11,
+    "gradient_boost": 6,
+    "seasonal_naive": 3
+  }
+}
