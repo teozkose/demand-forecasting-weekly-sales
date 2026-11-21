@@ -67,7 +67,7 @@ Four weeks ahead (same target weeks):
 
 {{INTERVAL_TABLE}}
 
-![Interval coverage](results/interval_coverage.png)
+![Interval coverage](results/prediction_intervals.png)
 
 One week ahead, the ETS interval covers {{COV_ETS_1}} and the boosting quantiles {{COV_GBM_1}}. Four weeks ahead the statistical intervals are too wide (Theta covers {{COV_THETA_4}}) while the quantile models stay narrow and slightly under-cover ({{COV_GBM_4}}).
 

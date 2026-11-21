@@ -102,7 +102,7 @@ def step_run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     fg.total_backtest(fc, results / "backtest_total.png")
     fg.wape_with_ci(summary, results / "wape_by_model.png")
-    fg.coverage_plot(intervals, nominal, results / "interval_coverage.png")
+    fg.coverage_plot(intervals, nominal, results / "prediction_intervals.png")
     fg.inventory_plot(inv, results / "inventory_tradeoff.png")
     fg.segment_plot(seg, POINT_MODELS, results / "segment_errors.png")
 

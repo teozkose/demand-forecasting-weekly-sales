@@ -92,7 +92,7 @@ Four weeks ahead (same target weeks):
 | 4 | Theta | 95.0% | 91.5% to 98.0% | 2.43 |
 | 4 | Global gradient boosting | 74.5% | 66.5% to 82.0% | 1.30 |
 
-![Interval coverage](results/interval_coverage.png)
+![Interval coverage](results/prediction_intervals.png)
 
 One week ahead, the ETS interval covers 82% and the boosting quantiles 75%. Four weeks ahead the statistical intervals are too wide (Theta covers 95%) while the quantile models stay narrow and slightly under-cover (74%).
 

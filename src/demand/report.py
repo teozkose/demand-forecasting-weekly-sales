@@ -176,7 +176,7 @@ def _img(path: Path, alt: str) -> str:
 FIGURES = [
     ("backtest_total", "All-products weekly units against one-week-ahead forecasts and the boosting 80% band"),
     ("wape_by_model", "Pooled product WAPE with 95% bootstrap intervals, 1 and 4 weeks ahead"),
-    ("interval_coverage", "Coverage of each 80% prediction interval"),
+    ("prediction_intervals", "Coverage of each 80% prediction interval"),
     ("segment_errors", "WAPE by volume tier and by pre-peak versus peak weeks"),
     ("inventory_tradeoff", "Fill rate against leftover stock for each forecast and service target"),
 ]
@@ -227,7 +227,7 @@ pre-peak errors under-delivers in the peak: a {v['SL']} target fills only {v['FI
 {t['TABLE_H4']}
 <h2>Prediction intervals</h2>
 {t['INTERVAL_TABLE']}
-{f['interval_coverage']}
+{f['prediction_intervals']}
 <h2>Where it is wrong</h2>
 {t['SEGMENT_TABLE']}
 {f['segment_errors']}
