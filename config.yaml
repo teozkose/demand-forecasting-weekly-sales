@@ -1,0 +1,49 @@
+# Paths and parameters for the weekly demand-forecasting pipeline. Paths are relative to the repo root.
+data:
+  url: https://archive.ics.uci.edu/static/public/502/online+retail+ii.zip
+  raw: data/transactions.parquet
+  panel: data/weekly.parquet
+  min_raw_bytes: 1000000
+  country: United Kingdom
+
+paths:
+  results: results
+  docs: docs
+
+panel:
+  top_n: 20            # products forecast individually, ranked by revenue
+  min_weeks_sold: 90   # a product must sell in at least this many of the ~104 weeks
+  total_series: TOTAL  # name of the all-products series
+
+features:
+  base_window: 12      # weeks in the trailing mean that scales every series
+  lags: [1, 2, 3, 4, 8]
+  seasonal_lag: 52
+
+backtest:
+  target_weeks: 18     # forecast targets: the last 18 full weeks
+  calibration_weeks: 8 # the first 8 of them size safety stock; the last 10 are the headline window
+  horizons: [1, 4]     # weeks ahead
+  season: 52
+  peak_start: "2011-10-17"  # target weeks from here to the end are the pre-Christmas peak
+
+models:
+  gbm:
+    max_iter: 300
+    min_samples_leaf: 20
+    grid:
+      learning_rate: [0.03, 0.06]
+      max_depth: [3, 5]
+    tuning_weeks: 8    # time-ordered validation block just before the backtest
+  interval:
+    lower: 0.10
+    upper: 0.90
+
+evaluation:
+  n_boot: 1000
+  seed: 42
+  sensitivity_windows: [6, 10, 18]
+
+inventory:
+  service_levels: [0.90, 0.95, 0.98]
+  headline_service_level: 0.95
