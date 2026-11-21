@@ -1,54 +1,551 @@
 {
   "setup": {
-    "products": 20,
-    "weeks": 104,
-    "holdout_weeks": 12,
-    "holdout_start": "2011-09-12",
-    "holdout_end": "2011-11-28",
-    "lags": [
+    "horizons": [
       1,
-      2,
-      3,
-      4,
-      8,
-      52
+      4
+    ],
+    "headline_weeks": 10,
+    "calibration_weeks": 8,
+    "headline_start": "2011-09-26",
+    "headline_end": "2011-11-28",
+    "calibration_start": "2011-08-01",
+    "peak_start": "2011-10-17",
+    "n_boot": 1000,
+    "nominal_coverage": 0.8,
+    "fits_per_series": 36
+  },
+  "tuning": {
+    "chosen": {
+      "learning_rate": 0.03,
+      "max_depth": 3
+    },
+    "grid": [
+      {
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "wape": 0.5481
+      },
+      {
+        "learning_rate": 0.03,
+        "max_depth": 5,
+        "wape": 0.5566
+      },
+      {
+        "learning_rate": 0.06,
+        "max_depth": 3,
+        "wape": 0.5668
+      },
+      {
+        "learning_rate": 0.06,
+        "max_depth": 5,
+        "wape": 0.5674
+      }
     ]
   },
-  "methods": {
-    "naive": {
-      "products_wape_pooled": 0.589,
-      "products_wape_median": 0.683,
-      "products_mae": 231.1,
-      "total_wape": 0.165,
-      "total_mae": 21435.0
+  "products": {
+    "1": {
+      "naive": {
+        "wape": 0.6319,
+        "wape_ci": [
+          0.5229,
+          0.7954
+        ],
+        "vs_baseline": 0.0,
+        "vs_baseline_ci": [
+          0.0,
+          0.0
+        ],
+        "mae": 272.0,
+        "bias": -0.0383
+      },
+      "seasonal_naive": {
+        "wape": 0.6508,
+        "wape_ci": [
+          0.5079,
+          0.8693
+        ],
+        "vs_baseline": 0.0189,
+        "vs_baseline_ci": [
+          -0.1048,
+          0.2012
+        ],
+        "mae": 280.1,
+        "bias": 0.1349
+      },
+      "ets": {
+        "wape": 0.4588,
+        "wape_ci": [
+          0.3966,
+          0.5395
+        ],
+        "vs_baseline": -0.1731,
+        "vs_baseline_ci": [
+          -0.2585,
+          -0.1033
+        ],
+        "mae": 197.5,
+        "bias": -0.1783
+      },
+      "theta": {
+        "wape": 0.4794,
+        "wape_ci": [
+          0.4108,
+          0.5691
+        ],
+        "vs_baseline": -0.1525,
+        "vs_baseline_ci": [
+          -0.2303,
+          -0.0996
+        ],
+        "mae": 206.3,
+        "bias": -0.1401
+      },
+      "gbm": {
+        "wape": 0.5318,
+        "wape_ci": [
+          0.4556,
+          0.6384
+        ],
+        "vs_baseline": -0.1001,
+        "vs_baseline_ci": [
+          -0.1686,
+          -0.0451
+        ],
+        "mae": 228.9,
+        "bias": -0.0272
+      }
     },
-    "seasonal_naive": {
-      "products_wape_pooled": 0.668,
-      "products_wape_median": 0.867,
-      "products_mae": 262.2,
-      "total_wape": 0.202,
-      "total_mae": 26232.0
-    },
-    "holt_damped": {
-      "products_wape_pooled": 0.446,
-      "products_wape_median": 0.499,
-      "products_mae": 175.1,
-      "total_wape": 0.167,
-      "total_mae": 21655.0
-    },
-    "gradient_boost": {
-      "products_wape_pooled": 0.522,
-      "products_wape_median": 0.534,
-      "products_mae": 204.9,
-      "total_wape": 0.196,
-      "total_mae": 25447.0
+    "4": {
+      "naive": {
+        "wape": 0.6281,
+        "wape_ci": [
+          0.54,
+          0.7629
+        ],
+        "vs_baseline": 0.0,
+        "vs_baseline_ci": [
+          0.0,
+          0.0
+        ],
+        "mae": 270.3,
+        "bias": -0.244
+      },
+      "seasonal_naive": {
+        "wape": 0.6508,
+        "wape_ci": [
+          0.5079,
+          0.8693
+        ],
+        "vs_baseline": 0.0227,
+        "vs_baseline_ci": [
+          -0.1016,
+          0.2084
+        ],
+        "mae": 280.1,
+        "bias": 0.1349
+      },
+      "ets": {
+        "wape": 0.5212,
+        "wape_ci": [
+          0.4369,
+          0.5942
+        ],
+        "vs_baseline": -0.1069,
+        "vs_baseline_ci": [
+          -0.2195,
+          -0.0053
+        ],
+        "mae": 224.3,
+        "bias": -0.2618
+      },
+      "theta": {
+        "wape": 0.5236,
+        "wape_ci": [
+          0.4455,
+          0.595
+        ],
+        "vs_baseline": -0.1045,
+        "vs_baseline_ci": [
+          -0.209,
+          -0.0173
+        ],
+        "mae": 225.4,
+        "bias": -0.2443
+      },
+      "gbm": {
+        "wape": 0.5494,
+        "wape_ci": [
+          0.457,
+          0.6595
+        ],
+        "vs_baseline": -0.0787,
+        "vs_baseline_ci": [
+          -0.1737,
+          0.0081
+        ],
+        "mae": 236.4,
+        "bias": -0.0669
+      }
     }
   },
-  "best_method_products": "holt_damped",
-  "best_method_total": "naive",
-  "products_won_by_method": {
-    "holt_damped": 11,
-    "gradient_boost": 6,
-    "seasonal_naive": 3
-  }
+  "total": {
+    "1": {
+      "naive": {
+        "wape": 0.1611,
+        "bias": -0.0032
+      },
+      "seasonal_naive": {
+        "wape": 0.1667,
+        "bias": 0.0696
+      },
+      "ets": {
+        "wape": 0.1448,
+        "bias": -0.0392
+      },
+      "theta": {
+        "wape": 0.1475,
+        "bias": -0.0283
+      },
+      "gbm": {
+        "wape": 0.1349,
+        "bias": 0.0301
+      }
+    },
+    "4": {
+      "naive": {
+        "wape": 0.2234,
+        "bias": -0.1465
+      },
+      "seasonal_naive": {
+        "wape": 0.1667,
+        "bias": 0.0696
+      },
+      "ets": {
+        "wape": 0.204,
+        "bias": -0.1858
+      },
+      "theta": {
+        "wape": 0.1987,
+        "bias": -0.1757
+      },
+      "gbm": {
+        "wape": 0.1569,
+        "bias": 0.0458
+      }
+    }
+  },
+  "intervals": {
+    "1": {
+      "ets": {
+        "coverage": 0.825,
+        "coverage_ci": [
+          0.7649,
+          0.88
+        ],
+        "relative_width": 1.323,
+        "nominal": 0.8
+      },
+      "theta": {
+        "coverage": 0.815,
+        "coverage_ci": [
+          0.745,
+          0.875
+        ],
+        "relative_width": 1.318,
+        "nominal": 0.8
+      },
+      "gbm": {
+        "coverage": 0.75,
+        "coverage_ci": [
+          0.68,
+          0.8151
+        ],
+        "relative_width": 1.277,
+        "nominal": 0.8
+      }
+    },
+    "4": {
+      "ets": {
+        "coverage": 0.91,
+        "coverage_ci": [
+          0.85,
+          0.9601
+        ],
+        "relative_width": 2.118,
+        "nominal": 0.8
+      },
+      "theta": {
+        "coverage": 0.95,
+        "coverage_ci": [
+          0.915,
+          0.98
+        ],
+        "relative_width": 2.433,
+        "nominal": 0.8
+      },
+      "gbm": {
+        "coverage": 0.745,
+        "coverage_ci": [
+          0.665,
+          0.82
+        ],
+        "relative_width": 1.305,
+        "nominal": 0.8
+      }
+    }
+  },
+  "best_model_h1": "ets",
+  "products_won_h1": {
+    "ets": 11,
+    "theta": 3,
+    "seasonal_naive": 3,
+    "gbm": 2,
+    "naive": 1
+  },
+  "tiers": {
+    "high": [
+      "85123A",
+      "85099B",
+      "84879",
+      "22197",
+      "22386",
+      "22178"
+    ],
+    "mid": [
+      "47566",
+      "85099F",
+      "21137",
+      "20725",
+      "21931",
+      "85099C",
+      "22411"
+    ],
+    "low": [
+      "79321",
+      "48138",
+      "21621",
+      "20685",
+      "15056N",
+      "22112",
+      "21843"
+    ]
+  },
+  "segments": [
+    {
+      "segment_type": "tier",
+      "segment": "low",
+      "products": 7,
+      "weeks": 10,
+      "actual_units": 8038.0,
+      "naive": 0.7034,
+      "seasonal_naive": 0.7751,
+      "ets": 0.5924,
+      "theta": 0.5694,
+      "gbm": 0.5962
+    },
+    {
+      "segment_type": "tier",
+      "segment": "mid",
+      "products": 7,
+      "weeks": 10,
+      "actual_units": 19641.0,
+      "naive": 0.7155,
+      "seasonal_naive": 0.6283,
+      "ets": 0.4856,
+      "theta": 0.5074,
+      "gbm": 0.5717
+    },
+    {
+      "segment_type": "tier",
+      "segment": "high",
+      "products": 6,
+      "weeks": 10,
+      "actual_units": 58398.0,
+      "naive": 0.594,
+      "seasonal_naive": 0.6413,
+      "ets": 0.4314,
+      "theta": 0.4576,
+      "gbm": 0.5095
+    },
+    {
+      "segment_type": "period",
+      "segment": "pre-peak",
+      "products": 20,
+      "weeks": 3,
+      "actual_units": 22351.0,
+      "naive": 0.7968,
+      "seasonal_naive": 0.8584,
+      "ets": 0.503,
+      "theta": 0.5226,
+      "gbm": 0.6437
+    },
+    {
+      "segment_type": "period",
+      "segment": "peak",
+      "products": 20,
+      "weeks": 7,
+      "actual_units": 63726.0,
+      "naive": 0.5741,
+      "seasonal_naive": 0.578,
+      "ets": 0.4433,
+      "theta": 0.4642,
+      "gbm": 0.4926
+    }
+  ],
+  "inventory": [
+    {
+      "model": "naive",
+      "target_service": 0.9,
+      "fill_rate": 0.8645,
+      "weeks_short": 0.19,
+      "safety_stock_per_week": 6968.5063,
+      "leftover_per_week": 7804.843
+    },
+    {
+      "model": "naive",
+      "target_service": 0.95,
+      "fill_rate": 0.8916,
+      "weeks_short": 0.15,
+      "safety_stock_per_week": 8943.981,
+      "leftover_per_week": 9547.074
+    },
+    {
+      "model": "naive",
+      "target_service": 0.98,
+      "fill_rate": 0.9186,
+      "weeks_short": 0.14,
+      "safety_stock_per_week": 11167.3713,
+      "leftover_per_week": 11538.1991
+    },
+    {
+      "model": "seasonal_naive",
+      "target_service": 0.9,
+      "fill_rate": 0.9301,
+      "weeks_short": 0.115,
+      "safety_stock_per_week": 7828.825,
+      "leftover_per_week": 9591.8588
+    },
+    {
+      "model": "seasonal_naive",
+      "target_service": 0.95,
+      "fill_rate": 0.9524,
+      "weeks_short": 0.07,
+      "safety_stock_per_week": 10048.1881,
+      "leftover_per_week": 11618.7817
+    },
+    {
+      "model": "seasonal_naive",
+      "target_service": 0.98,
+      "fill_rate": 0.9683,
+      "weeks_short": 0.06,
+      "safety_stock_per_week": 12546.0741,
+      "leftover_per_week": 13979.8361
+    },
+    {
+      "model": "ets",
+      "target_service": 0.9,
+      "fill_rate": 0.8488,
+      "weeks_short": 0.17,
+      "safety_stock_per_week": 5748.1794,
+      "leftover_per_week": 5514.5481
+    },
+    {
+      "model": "ets",
+      "target_service": 0.95,
+      "fill_rate": 0.8758,
+      "weeks_short": 0.145,
+      "safety_stock_per_week": 7377.7084,
+      "leftover_per_week": 6911.7438
+    },
+    {
+      "model": "ets",
+      "target_service": 0.98,
+      "fill_rate": 0.9014,
+      "weeks_short": 0.125,
+      "safety_stock_per_week": 9211.7379,
+      "leftover_per_week": 8525.4438
+    },
+    {
+      "model": "theta",
+      "target_service": 0.9,
+      "fill_rate": 0.8549,
+      "weeks_short": 0.175,
+      "safety_stock_per_week": 5678.6761,
+      "leftover_per_week": 5721.5866
+    },
+    {
+      "model": "theta",
+      "target_service": 0.95,
+      "fill_rate": 0.8799,
+      "weeks_short": 0.14,
+      "safety_stock_per_week": 7288.5019,
+      "leftover_per_week": 7116.3468
+    },
+    {
+      "model": "theta",
+      "target_service": 0.98,
+      "fill_rate": 0.9047,
+      "weeks_short": 0.11,
+      "safety_stock_per_week": 9100.3555,
+      "leftover_per_week": 8715.2487
+    },
+    {
+      "model": "gbm",
+      "target_service": 0.9,
+      "fill_rate": 0.8711,
+      "weeks_short": 0.16,
+      "safety_stock_per_week": 5627.8884,
+      "leftover_per_week": 6503.749
+    },
+    {
+      "model": "gbm",
+      "target_service": 0.95,
+      "fill_rate": 0.8984,
+      "weeks_short": 0.14,
+      "safety_stock_per_week": 7223.3166,
+      "leftover_per_week": 7864.1345
+    },
+    {
+      "model": "gbm",
+      "target_service": 0.98,
+      "fill_rate": 0.9246,
+      "weeks_short": 0.115,
+      "safety_stock_per_week": 9018.9658,
+      "leftover_per_week": 9434.4851
+    },
+    {
+      "model": "gbm_q90",
+      "target_service": 0.9,
+      "fill_rate": 0.8797,
+      "weeks_short": 0.145,
+      "safety_stock_per_week": 5534.76,
+      "leftover_per_week": 6336.503
+    }
+  ],
+  "window_sensitivity": [
+    {
+      "weeks": 6,
+      "naive": 0.5761,
+      "seasonal_naive": 0.557,
+      "ets": 0.4346,
+      "theta": 0.4527,
+      "gbm": 0.4628
+    },
+    {
+      "weeks": 10,
+      "naive": 0.6319,
+      "seasonal_naive": 0.6508,
+      "ets": 0.4588,
+      "theta": 0.4794,
+      "gbm": 0.5318
+    },
+    {
+      "weeks": 18,
+      "naive": 0.6145,
+      "seasonal_naive": 0.6491,
+      "ets": 0.4662,
+      "theta": 0.479,
+      "gbm": 0.5074
+    }
+  ]
 }

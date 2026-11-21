@@ -1,0 +1,40 @@
+{
+  "raw_rows": 1067371,
+  "clean_rows": 922365,
+  "date_min": "2009-12-01",
+  "date_max": "2011-12-09",
+  "skus_sold": 4693,
+  "weeks": 104,
+  "first_week": "2009-12-07",
+  "last_week": "2011-11-28",
+  "products": 20,
+  "product_revenue_share": 0.09510263596722615,
+  "zero_weeks_share": 0.03365384615384615,
+  "cleaning": [
+    {
+      "step": "exact duplicate invoice lines",
+      "removed": 34335,
+      "remaining": 1033036
+    },
+    {
+      "step": "cancellation invoices (number starts with C)",
+      "removed": 19104,
+      "remaining": 1013932
+    },
+    {
+      "step": "zero or negative quantity or price",
+      "removed": 6019,
+      "remaining": 1007913
+    },
+    {
+      "step": "customers outside United Kingdom",
+      "removed": 81875,
+      "remaining": 926038
+    },
+    {
+      "step": "non-product codes (postage, fees, manual, samples)",
+      "removed": 3673,
+      "remaining": 922365
+    }
+  ]
+}
